@@ -18,9 +18,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class txnscript
-{  //ici ajoute le code pour créer les tables 
-	
-	
+{ 	
 	// coller ici les paramètres issu de Heroku
 	private static String jdbcHerokuMachine = "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com" ;
 	private static String jdbcHerokuDatabase = "d2tuk11fto8hrt"  ;
