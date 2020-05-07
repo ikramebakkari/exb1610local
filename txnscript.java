@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
+import java.sql.*;
 
 public class txnscript
 {   
@@ -29,15 +30,15 @@ CREATE TABLE IF NOT EXISTS Personnes
     id_ville INTEGER,
     Villes_id INTEGER,
     PRIMARY KEY(id)
-);
+	);
 
 CREATE TABLE IF NOT EXISTS Villes
-(
+[
     id INTEGER NOT NULL,
     nom VARCHAR(20),
     code_postal INTEGER,
     PRIMARY KEY(id)
-);
+	];
 
 
 //Create FKs
