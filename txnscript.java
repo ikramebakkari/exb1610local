@@ -57,11 +57,7 @@ public class txnscript
 	// private static insaLogger logger = insaLogger.getLogger(txnscript.class);
 	private static String saut_de_ligne = "\n" ;
 	
-	////here
-	public txnscript() 
-		 UserInput villes = new UserInput()
-               input.villes();
-                         }
+	
 	
     private txnscript()
     {
