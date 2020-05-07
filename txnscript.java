@@ -16,7 +16,21 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class txnscript
-{
+{   
+	//HERREE!
+	DROP TABLE IF EXISTS "personnes" ; 
+        DROP TABLE IF EXISTS "villes" ; 
+
+        -- Create schemas 
+         -- Create tables CREATE TABLE IF NOT EXISTS villes ( id SERIAL NOT NULL, nom VARCHAR(70), code_postal INTEGER, PRIMARY KEY(id) ); 
+
+        CREATE TABLE IF NOT EXISTS personnes ( id SERIAL NOT NULL, nom VARCHAR(70), prenom VARCHAR(70), fk_ville INTEGER, PRIMARY KEY(id) );
+
+        -- Create FKs ALTER TABLE personnes ADD CONSTRAINT cle_etrangere_personnes_vers_villes FOREIGN KEY (fk_ville) REFERENCES villes(id) MATCH SIMPLE ;
+
+        -- Create Indexes
+
+
 	
 	// coller ici les paramètres issu de Heroku
 	private static String jdbcHerokuMachine = "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com" ;
@@ -25,12 +39,7 @@ public class txnscript
 	private static String jdbcHerokuPass = "1551f6a6f49a5f017b5723cb7d1ef75e8399b4d5a5b3a5a5e93cbed3dfcd9884" ;
 
 
-// exemple MYSQL LOCAL
-	private static String jdbcMysqlMachine = "localhost" ;
-	private static String jdbcMysqlDatabase = "exb1610" ;
-	private static String jdbcMysqlUser = "root" ;
-	private static String jdbcMysqlPass = "tsimiski4" ;
-	private static String jdbcMysqlIntricacies = "zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC" ;
+
 	
 	private static String jdbcUrl ;
 	
