@@ -31,9 +31,6 @@ public class txnscript
 ///////////////////here
 
 	
-	 DROP TABLE villes ; 
-	CREATE TABLE villes ( id SERIAL NOT NULL, nom VARCHAR(70), code_postal INTEGER,
-        PRIMARY KEY(id) ); 
 	
 	private static String jdbcUrl ;
 	
