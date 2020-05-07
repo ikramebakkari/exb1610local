@@ -14,23 +14,23 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-import java.sql.*;
 
 public class txnscript
-{   
-	
-
-
+{
 	
 	// coller ici les paramètres issu de Heroku
 	private static String jdbcHerokuMachine = "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com" ;
-	private static String jdbcHerokuDatabase = "d2tuk11fto8hrt" ;
+	private static String jdbcHerokuDatabase = ""d2tuk11fto8hrt ;
 	private static String jdbcHerokuUser = "cukwwvcbdppohp" ;
 	private static String jdbcHerokuPass = "1551f6a6f49a5f017b5723cb7d1ef75e8399b4d5a5b3a5a5e93cbed3dfcd9884" ;
 
-///////////////////here
 
-	
+// exemple MYSQL LOCAL
+	private static String jdbcMysqlMachine = "localhost" ;
+	private static String jdbcMysqlDatabase = "exb1610" ;
+	private static String jdbcMysqlUser = "root" ;
+	private static String jdbcMysqlPass = "tsimiski4" ;
+	private static String jdbcMysqlIntricacies = "zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC" ;
 	
 	private static String jdbcUrl ;
 	
@@ -43,7 +43,7 @@ public class txnscript
 	static Statement stmt = null ;
 	static PreparedStatement pstmt = null ;
 	static ResultSet resultSet = null ;
-	// private static insaLogger logger = insaLogger.getLogger(txnscript.class); 
+	// private static insaLogger logger = insaLogger.getLogger(txnscript.class);
 	private static String saut_de_ligne = "\n" ;
 	
     private txnscript()
