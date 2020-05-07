@@ -31,14 +31,16 @@ public class txnscript
 ///////////////////here
 
 	
-	
+	 DROP TABLE villes ; 
+	CREATE TABLE villes ( id SERIAL NOT NULL, nom VARCHAR(70), code_postal INTEGER,
+        PRIMARY KEY(id) ); 
 	
 	private static String jdbcUrl ;
 	
-	private static String jdbcMachine = "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com" ;
-	private static String jdbcDatabase = "d2tuk11fto8hrt" ;
-	private static String jdbcUser = "cukwwvcbdppohp" ;
-	private static String jdbcPass = "1551f6a6f49a5f017b5723cb7d1ef75e8399b4d5a5b3a5a5e93cbed3dfcd9884" ;	
+	private static String jdbcMachine = "" ;
+	private static String jdbcDatabase = "" ;
+	private static String jdbcUser = "" ;
+	private static String jdbcPass = "" ;	
 	
 	static Connection cnx = null ;
 	static Statement stmt = null ;
