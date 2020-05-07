@@ -41,7 +41,7 @@ public class txnscript
 	
 	
 	
-        CREATE TABLE villes;
+        DROP TABLE villes;
 	CREATE TABLE villes(
 		    id SERIAL NOT NULL,
 		    nom VARCHAR(70),
