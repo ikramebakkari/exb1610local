@@ -43,7 +43,7 @@ public class txnscript
 	static Statement stmt = null ;
 	static PreparedStatement pstmt = null ;
 	static ResultSet resultSet = null ;
-	// private static insaLogger logger = insaLogger.getLogger(txnscript.class);
+	// private static insaLogger logger = insaLogger.getLogger(txnscript.class); 
 	private static String saut_de_ligne = "\n" ;
 	
     private txnscript()
