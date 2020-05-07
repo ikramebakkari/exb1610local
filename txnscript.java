@@ -22,7 +22,7 @@ public class txnscript
 	//Create schemas
 
 //Create tables
-CREATE TABLE IF NOT EXISTS Personnes
+CREATE TABLE IF NOT EXISTS personnes
 (
     id INTEGER NOT NULL,
     nom VARCHAR(20),
@@ -30,9 +30,9 @@ CREATE TABLE IF NOT EXISTS Personnes
     id_ville INTEGER,
     Villes_id INTEGER,
     PRIMARY KEY(id)
-	);
+);
 
-CREATE TABLE IF NOT EXISTS Villes
+CREATE TABLE IF NOT EXISTS villes
 (
     id INTEGER NOT NULL,
     nom VARCHAR(20),
@@ -42,9 +42,9 @@ CREATE TABLE IF NOT EXISTS Villes
 
 
 //Create FKs
-ALTER TABLE Personnes
-    ADD    FOREIGN KEY (Villes_id)
-    REFERENCES Villes(id)
+    ALTER TABLE personnes
+    ADD    FOREIGN KEY (villes_id)
+    REFERENCES villes(id)
     MATCH SIMPLE
 ;
     
