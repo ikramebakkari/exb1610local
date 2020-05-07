@@ -18,19 +18,37 @@ import java.util.stream.Stream;
 public class txnscript
 {   
 	//HERREE!
-	DROP TABLE IF EXISTS "personnes" ;
-        DROP TABLE IF EXISTS "villes" ;
+	//Create schemas
 
-         //Create schemas 
-         //Create tables
-	CREATE TABLE IF NOT EXISTS villes ( id SERIAL NOT NULL, nom VARCHAR(70), code_postal INTEGER, PRIMARY KEY(id) ) ;
+//Create tables
+CREATE TABLE IF NOT EXISTS Personnes
+(
+    id INTEGER NOT NULL,
+    nom VARCHAR(20),
+    prenom VARCHAR(20),
+    id_ville INTEGER,
+    Villes_id INTEGER,
+    PRIMARY KEY(id)
+);
 
-        CREATE TABLE IF NOT EXISTS personnes ( id SERIAL NOT NULL, nom VARCHAR(70), prenom VARCHAR(70), fk_ville INTEGER, PRIMARY KEY(id) );
+CREATE TABLE IF NOT EXISTS Villes
+(
+    id INTEGER NOT NULL,
+    nom VARCHAR(20),
+    code_postal INTEGER,
+    PRIMARY KEY(id)
+);
 
-         //Create FKs
-	ALTER TABLE personnes ADD CONSTRAINT cle_etrangere_personnes_vers_villes FOREIGN KEY (fk_ville) REFERENCES villes(id) MATCH SIMPLE ;
 
-        //Create Indexes
+//Create FKs
+ALTER TABLE Personnes
+    ADD    FOREIGN KEY (Villes_id)
+    REFERENCES Villes(id)
+    MATCH SIMPLE
+;
+    
+
+//Create Indexes
 
 
 	
