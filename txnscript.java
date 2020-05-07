@@ -30,38 +30,60 @@ public class txnscript
 	private static String jdbcHerokuUser = "cukwwvcbdppohp" ;
 	private static String jdbcHerokuPass = "1551f6a6f49a5f017b5723cb7d1ef75e8399b4d5a5b3a5a5e93cbed3dfcd9884" ;
 
+///////////////////here
+	public class villes {
+  
+   
+   public static void main(String[] args) {
+   Connection conn = null;
+   Statement stmt = null;
+   try{
+      //STEP 2: Register JDBC driver
+      Class.forName("ec2-46-137-156-205.eu-west-1.compute.amazonaws.com");
 
+      //STEP 3: Open a connection
+      System.out.println("connected to a database...");
+      conn = DriverManager.getConnection(jdbcHerokuDatabase, jdbcHerokuUser, jdbcHerokuPass);
+      System.out.println("Connected database successfully...");
+      
+      //STEP 4: Execute a query
+      System.out.println("Creating table in given database...");
+      stmt = conn.createStatement();
+      
+      String sql = "CREATE TABLE personnes " +
+                   "(id INTEGER not NULL, " +
+                   " nom VARCHAR(70), " + 
+                   " prenom VARCHAR(70), " + 
+                   " id_ville INTEGER, " + 
+                   " PRIMARY KEY ( id ))"; 
 
-	//Create tables
-CREATE TABLE IF NOT EXISTS personnes
-(
-    id INTEGER NOT NULL,
-    nom VARCHAR(20),
-    prenom VARCHAR(20),
-    id_ville INTEGER,
-    Villes_id INTEGER,
-    PRIMARY KEY(id)
-);
+      stmt.executeUpdate(sql);
+      System.out.println("Created table in given database...");
+   }catch(SQLException se){
+      //Handle errors for JDBC
+      se.printStackTrace();
+   }catch(Exception e){
+      //Handle errors for Class.forName
+      e.printStackTrace();
+   }finally{
+      //finally block used to close resources
+      try{
+         if(stmt!=null)
+            conn.close();
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn!=null)
+            conn.close();
+      }catch(SQLException se){
+         se.printStackTrace();
+      }//end finally try
+   }//end try
+  
+}//end main
+}//end JDBCExample
 
-CREATE TABLE IF NOT EXISTS villes
-(
-    id INTEGER NOT NULL,
-    nom VARCHAR(20),
-    code_postal INTEGER,
-    PRIMARY KEY(id)
-	);
-
-
-//Create FKs
-    ALTER TABLE personnes
-    ADD FOREIGN KEY (villes_id);
-    REFERENCES villes(id)
-    MATCH SIMPLE
-;
-    
-
-//Create Indexes
-
+	
 	
 	
 	private static String jdbcUrl ;
