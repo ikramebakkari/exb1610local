@@ -16,6 +16,21 @@ import java.util.stream.Stream;
 
 public class txnscript
 {
+	DROP TABLE villes;
+	    CREATE TABLE villes(
+		    id SERIAL NOT NULL,
+		    nom VARCHAR(70),
+		    code_postal INTEGER,
+		    PRIMARY KEY(id)
+	                      );
+	    
+	     DROP TABLE villes ;
+	    CREATE TABLE villes (
+		    id SERIAL NOT NULL,
+		    nom VARCHAR(70),
+		    code_postal INTEGER,
+		    PRIMARY KEY(id)
+	                         );
 	
 	// coller ici les paramètres issu de Heroku
 	private static String jdbcHerokuMachine = "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com" ;
@@ -48,21 +63,7 @@ public class txnscript
     private txnscript()
     {
 	    
-	     DROP TABLE villes;
-	    CREATE TABLE villes(
-		    id SERIAL NOT NULL,
-		    nom VARCHAR(70),
-		    code_postal INTEGER,
-		    PRIMARY KEY(id)
-	                      );
-	    
-	     DROP TABLE villes ;
-	    CREATE TABLE villes (
-		    id SERIAL NOT NULL,
-		    nom VARCHAR(70),
-		    code_postal INTEGER,
-		    PRIMARY KEY(id)
-	                         );
+	     
 	    
 		// identifier le pilote charge
 		boolean bCheckMySQL = checkMySQL () ;
