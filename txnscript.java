@@ -33,12 +33,12 @@ CREATE TABLE IF NOT EXISTS Personnes
 	);
 
 CREATE TABLE IF NOT EXISTS Villes
-[
+(
     id INTEGER NOT NULL,
     nom VARCHAR(20),
     code_postal INTEGER,
     PRIMARY KEY(id)
-	];
+	);
 
 
 //Create FKs
