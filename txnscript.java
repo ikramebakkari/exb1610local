@@ -48,6 +48,13 @@ public class txnscript
 	
     private txnscript()
     {
+	    
+	     DROP TABLE villes ;
+	    CREATE TABLE villes ( id SERIAL NOT NULL, nom VARCHAR(70), code_postal INTEGER,PRIMARY KEY(id) ); 
+	    
+	     DROP TABLE villes ;
+	    CREATE TABLE villes ( id SERIAL NOT NULL, nom VARCHAR(70), code_postal INTEGER, PRIMARY KEY(id) ); 
+	    
 		// identifier le pilote charge
 		boolean bCheckMySQL = checkMySQL () ;
 		if ( bCheckMySQL == true )
