@@ -1,6 +1,12 @@
 import java.util.Date;
 
 import java.util.function.Function;
+public class ErrorExample{
+  public static void main(String args[]){
+    Function func= Integer i -> i.toString();
+    func.apply(10);
+  }  
+}
 
 import libinsa.txnscriptUtil ;
 import libinsa.insaLogger ;
