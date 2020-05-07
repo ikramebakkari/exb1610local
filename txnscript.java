@@ -21,35 +21,6 @@ public class txnscript
 	//HERREE!
 	//Create schemas
 
-//Create tables
-CREATE TABLE IF NOT EXISTS personnes
-(
-    id INTEGER [NOT NULL],
-    nom VARCHAR(20),
-    prenom VARCHAR(20),
-    id_ville INTEGER,
-    Villes_id INTEGER,
-    PRIMARY KEY(id)
-);
-
-CREATE TABLE ; IF NOT EXISTS villes
-(
-    id INTEGER [NOT NULL],
-    nom VARCHAR(20),
-    code_postal INTEGER,
-    PRIMARY KEY(id)
-	);
-
-
-//Create FKs
-    ALTER TABLE ; personnes
-    ADD FOREIGN KEY (villes_id);
-    REFERENCES villes(id)
-    MATCH SIMPLE
-;
-    
-
-//Create Indexes
 
 
 	
@@ -61,6 +32,37 @@ CREATE TABLE ; IF NOT EXISTS villes
 
 
 
+	//Create tables
+CREATE TABLE IF NOT EXISTS personnes
+(
+    id INTEGER NOT NULL,
+    nom VARCHAR(20),
+    prenom VARCHAR(20),
+    id_ville INTEGER,
+    Villes_id INTEGER,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS villes
+(
+    id INTEGER NOT NULL,
+    nom VARCHAR(20),
+    code_postal INTEGER,
+    PRIMARY KEY(id)
+	);
+
+
+//Create FKs
+    ALTER TABLE personnes
+    ADD FOREIGN KEY (villes_id);
+    REFERENCES villes(id)
+    MATCH SIMPLE
+;
+    
+
+//Create Indexes
+
+	
 	
 	private static String jdbcUrl ;
 	
