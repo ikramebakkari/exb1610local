@@ -1,10 +1,8 @@
-// for more information, please visit : http://prodageo.insa-rouen.fr/wiki/pmwiki.php?n=FilRouge.CoderTransactionScript
-
 import java.util.Date;
 
 // import libinsa.txnscriptUtil ;
 // import libinsa.insaLogger ;
-
+a
 // types retournés par les opérations JDBC
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -21,18 +19,13 @@ public class txnscript
 {
 	
 	// coller ici les paramètres issu de Heroku
-	private static String jdbcHerokuMachine = "" ;
-	private static String jdbcHerokuDatabase = "" ;
-	private static String jdbcHerokuUser = "" ;
-	private static String jdbcHerokuPass = "" ;
+	private static String jdbcHerokuMachine = "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com" ;
+	private static String jdbcHerokuDatabase = "d2tuk11fto8hrt" ;
+	private static String jdbcHerokuUser = "cukwwvcbdppohp" ;
+	private static String jdbcHerokuPass = "1551f6a6f49a5f017b5723cb7d1ef75e8399b4d5a5b3a5a5e93cbed3dfcd9884" ;
 
 
-// exemple MYSQL LOCAL
-	private static String jdbcMysqlMachine = "localhost" ;
-	private static String jdbcMysqlDatabase = "exb1610" ;
-	private static String jdbcMysqlUser = "root" ;
-	private static String jdbcMysqlPass = "tsimiski4" ;
-	private static String jdbcMysqlIntricacies = "zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC" ;
+
 	
 	private static String jdbcUrl ;
 	
@@ -45,7 +38,7 @@ public class txnscript
 	static Statement stmt = null ;
 	static PreparedStatement pstmt = null ;
 	static ResultSet resultSet = null ;
-	// private static insaLogger logger = insaLogger.getLogger(txnscript.class);
+	// private static insaLogger logger = insaLogger.getLogger(txnscript.class); 
 	private static String saut_de_ligne = "\n" ;
 	
     private txnscript()
@@ -139,28 +132,6 @@ public class txnscript
 	}
 
 
-    	
-    public static boolean initDb()	
-    {
-		String sql = "DROP TABLE IF EXISTS 'personnes' ; DROP TABLE IF EXISTS 'villes' ;
-	        sql = sql + "CREATE TABLE ( id SERIAL NOT NULL, nom VARCHAR(70), code_postal INTEGER, PRIMARY KEY(id) );"
-		sql = sql + "CREATE TABLE ( id SERIAL NOT NULL, nom VARCHAR(70), prenom VARCHAR(70), fk_ville INTEGER, PRIMARY KEY(id) );"
-		sql = sql + "ALTER TABLE personnes ADD CONSTRAINT cle_etrangere_personnes_vers_villes FOREIGN KEY (fk_ville) REFERENCES villes(id) MATCH SIMPLE ;" ;
-
-		try
-		{
-				PreparedStatement pstmt = cnx.prepareStatement(sql) ;
-				pstmt.executeUpdate();
-		}
-		catch (SQLException e)
-		{
-			System.out.println(e.getMessage());
-		}
-
-	    
-    }    
-	
-	
 	
     public static boolean checkMySQL()
     {
