@@ -1,13 +1,13 @@
 import java.util.Date;
 
-// import libinsa.txnscriptUtil ;
-// import libinsa.insaLogger ;
+import libinsa.txnscriptUtil ;
+import libinsa.insaLogger ;
 
 // types retournés par les opérations JDBC
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
-// import java.sql.ResultSet;
+import java.sql.ResultSet;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
