@@ -339,6 +339,28 @@ public class txnscript
 		return result ;
     }
 	
+	// creation fonction pour EXB1613
+    public static String updateVilleByName (String nom, Integer codePostal)
+    {
+        String result = "" ;
+		String sql = "UPDATE Villes SET code_postal = ? WHERE nom = ?" ;
+
+		try
+		{
+				PreparedStatement pstmt = cnx.prepareStatement(sql) ;
+				pstmt.setDouble(1, codePostal);
+				pstmt.setString(2, nom);
+				pstmt.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		return result ;
+    }
+
+	
 
 	
 	
