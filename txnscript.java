@@ -14,19 +14,18 @@ import java.sql.*;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths; 
+import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class txnscript
 {
+	
 	
 	// coller ici les paramètres issu de Heroku
 	private static String jdbcHerokuMachine = "ec2-54-247-89-181.eu-west-1.compute.amazonaws.com" ;
 	private static String jdbcHerokuDatabase = "d6geb74idmnu19" ;
 	private static String jdbcHerokuUser = "iuphwrfafbnsjb" ;
 	private static String jdbcHerokuPass = "2a160118c6d2ab11dd51ac7d5187d54b5648048c55f8edf6673135862787d849" ;
-
-
 // exemple MYSQL LOCAL
 	private static String jdbcMysqlMachine = "localhost" ;
 	private static String jdbcMysqlDatabase = "exb1610" ;
@@ -312,24 +311,31 @@ public class txnscript
     }
 
 	
-	
+    // fonction existante refactorée pour EXB1613
     public static String updateVille (Integer id, String nom, Integer codePostal)
     {
         String result = "" ;
 		
-		String sql = "UPDATE Villes SET nom = ?, code_postal = ? WHERE id = ?" ;
-
-		try
+		if ( id == null )
 		{
-				PreparedStatement pstmt = cnx.prepareStatement(sql) ;
-				pstmt.setString(1, nom);
-				pstmt.setDouble(2, codePostal);
-				pstmt.setInt(3, id);
-				pstmt.executeUpdate();
+			result = updateVilleByName ( nom, codePostal ) ;
 		}
-		catch (SQLException e)
+		else
 		{
-			System.out.println(e.getMessage());
+			String sql = "UPDATE Villes SET nom = ?, code_postal = ? WHERE id = ?" ;
+
+			try
+			{
+					PreparedStatement pstmt = cnx.prepareStatement(sql) ;
+					pstmt.setString(1, nom);
+					pstmt.setDouble(2, codePostal);
+					pstmt.setInt(3, id);
+					pstmt.executeUpdate();
+			}
+			catch (SQLException e)
+			{
+				System.out.println(e.getMessage());
+			}
 		}
 			
 		result = result + id ;
@@ -339,7 +345,9 @@ public class txnscript
 		return result ;
     }
 	
-	// creation fonction pour EXB1613
+
+
+    // creation fonction pour EXB1613
     public static String updateVilleByName (String nom, Integer codePostal)
     {
         String result = "" ;
