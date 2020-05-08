@@ -41,18 +41,13 @@ public class txnscript
 	
 	
 	
-       USE workflows
-GO
-CREATE TABLE [villes Table]
-(
-	[Order] [int] NOT NULL,
-	[id] [int] IDENTITY(1,1) NOT NULL,
-	[nom] [varchar],
-	[code_postal] [int] NOT NULL,
-  CONSTRAINT [PK_id] PRIMARY KEY CLUSTERED 
-  
-);
-GO
+       DROP TABLE villes ;
+
+        CREATE TABLE villes
+
+                    (id SERIAL NOT NULL, nom VARCHAR(70), code_postal INTEGER, PRIMARY KEY(id)) ;
+
+
 	    
 	    
 	
