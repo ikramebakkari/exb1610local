@@ -316,12 +316,7 @@ public class txnscript
     {
         String result = "" ;
 		
-		if ( id == null )
-		{
-			result = updateVilleByName ( nom, codePostal ) ;
-		}
-		else
-		{
+		
 			String sql = "UPDATE Villes SET nom = ?, code_postal = ? WHERE id = ?" ;
 
 			try
