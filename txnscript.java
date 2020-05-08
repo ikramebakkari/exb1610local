@@ -26,6 +26,7 @@ public class txnscript
 	private static String jdbcHerokuDatabase = "d6geb74idmnu19" ;
 	private static String jdbcHerokuUser = "iuphwrfafbnsjb" ;
 	private static String jdbcHerokuPass = "2a160118c6d2ab11dd51ac7d5187d54b5648048c55f8edf6673135862787d849" ;
+	
 // exemple MYSQL LOCAL
 	private static String jdbcMysqlMachine = "localhost" ;
 	private static String jdbcMysqlDatabase = "exb1610" ;
@@ -267,7 +268,7 @@ public class txnscript
 				String name = resultSet.getString("nom");
 				result = result + "/" + name ;
 				result = result + saut_de_ligne ;
-				// Timestamp createdDate = resultSet.getTimestamp("CREATED_DATE");
+				// Timestamp dDate = resultSet.getTimestamp("CREATED_DATE");
 			}
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
