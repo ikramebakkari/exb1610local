@@ -1,27 +1,30 @@
+// for more information, please visit : http://prodageo.insa-rouen.fr/wiki/pmwiki.php?n=FilRouge.CoderTransactionScript
+
 import java.util.Date;
 
+// import libinsa.txnscriptUtil ;
+// import libinsa.insaLogger ;
 
 // types retournés par les opérations JDBC
 import java.net.URI;
 import java.net.URISyntaxException;
-
-import java.sql.ResultSet;
+import java.sql.*;
+// import java.sql.ResultSet;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Paths; 
 import java.util.stream.Stream;
 
 public class txnscript
 {
 	
-	
 	// coller ici les paramètres issu de Heroku
-	private static String jdbcHerokuMachine = "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com" ;
-	private static String jdbcHerokuDatabase = "d2tuk11fto8hrt" ;
-	private static String jdbcHerokuUser = "cukwwvcbdppohp" ;
-	private static String jdbcHerokuPass = "1551f6a6f49a5f017b5723cb7d1ef75e8399b4d5a5b3a5a5e93cbed3dfcd9884" ;
+	private static String jdbcHerokuMachine = "ec2-54-247-89-181.eu-west-1.compute.amazonaws.com" ;
+	private static String jdbcHerokuDatabase = "d6geb74idmnu19" ;
+	private static String jdbcHerokuUser = "iuphwrfafbnsjb" ;
+	private static String jdbcHerokuPass = "2a160118c6d2ab11dd51ac7d5187d54b5648048c55f8edf6673135862787d849" ;
 
 
 // exemple MYSQL LOCAL
@@ -33,17 +36,10 @@ public class txnscript
 	
 	private static String jdbcUrl ;
 	
-	private static String jdbcMachine = "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com" ;
-	private static String jdbcDatabase = "d2tuk11fto8hrt" ;
-	private static String jdbcUser = "cukwwvcbdppohp" ;
-	private static String jdbcPass = "1551f6a6f49a5f017b5723cb7d1ef75e8399b4d5a5b3a5a5e93cbed3dfcd9884" ;	
-	
-	
-       
-     
-
-	    
-	    
+	private static String jdbcMachine = "" ;
+	private static String jdbcDatabase = "" ;
+	private static String jdbcUser = "" ;
+	private static String jdbcPass = "" ;	
 	
 	static Connection cnx = null ;
 	static Statement stmt = null ;
@@ -52,13 +48,8 @@ public class txnscript
 	// private static insaLogger logger = insaLogger.getLogger(txnscript.class);
 	private static String saut_de_ligne = "\n" ;
 	
-	
-	
     private txnscript()
     {
-	    
-	     
-	    
 		// identifier le pilote charge
 		boolean bCheckMySQL = checkMySQL () ;
 		if ( bCheckMySQL == true )
