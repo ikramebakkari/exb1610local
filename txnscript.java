@@ -1,6 +1,5 @@
 import java.util.Date;
-import libinsa.txnscriptUtil ;
-import libinsa.insaLogger ;
+
 
 // types retournés par les opérations JDBC
 import java.net.URI;
