@@ -41,7 +41,7 @@ public class txnscript
 	
 	
 	
-       USE AdventureWorks
+       USE workflows
 GO
 CREATE TABLE [villes Table]
 (
