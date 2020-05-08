@@ -41,12 +41,7 @@ public class txnscript
 	
 	
        
-       DROP TABLE villes ;
-       ALTER DATABASE ville
-	       
-        CREATE TABLE villes
-       (id SERIAL NOT NULL, nom VARCHAR(70), code_postal INTEGER, PRIMARY KEY(id));
-
+     
 
 	    
 	    
