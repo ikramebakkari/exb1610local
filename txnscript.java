@@ -1,3 +1,4 @@
+
 import java.util.Date;
 
 // import libinsa.txnscriptUtil ;
@@ -12,7 +13,7 @@ import java.sql.*;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths; 
+import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class txnscript
@@ -22,8 +23,8 @@ public class txnscript
 	private static String jdbcHerokuDatabase = "d563fbr8c46bl0" ;
 	private static String jdbcHerokuUser = "wykydzvqoqlqfs" ;
 	private static String jdbcHerokuPass = "24ec2cac06e27270912bea3427ffb3aae3e515dad854af730cc383220371b100" ;
-
-
+	
+	
 // exemple MYSQL LOCAL
 	private static String jdbcMysqlMachine = "localhost" ;
 	private static String jdbcMysqlDatabase = "exb1610" ;
@@ -309,24 +310,31 @@ public class txnscript
     }
 
 	
-	
+    // fonction existante refactorée pour EXB1613
     public static String updateVille (Integer id, String nom, Integer codePostal)
     {
         String result = "" ;
 		
-		String sql = "UPDATE Villes SET nom = ?, code_postal = ? WHERE id = ?" ;
-
-		try
+		if ( id == null )
 		{
-				PreparedStatement pstmt = cnx.prepareStatement(sql) ;
-				pstmt.setString(1, nom);
-				pstmt.setDouble(2, codePostal);
-				pstmt.setInt(3, id);
-				pstmt.executeUpdate();
+			result = updateVilleByName ( nom, codePostal ) ;
 		}
-		catch (SQLException e)
+		else
 		{
-			System.out.println(e.getMessage());
+			String sql = "UPDATE Villes SET nom = ?, code_postal = ? WHERE id = ?" ;
+
+			try
+			{
+					PreparedStatement pstmt = cnx.prepareStatement(sql) ;
+					pstmt.setString(1, nom);
+					pstmt.setDouble(2, codePostal);
+					pstmt.setInt(3, id);
+					pstmt.executeUpdate();
+			}
+			catch (SQLException e)
+			{
+				System.out.println(e.getMessage());
+			}
 		}
 			
 		result = result + id ;
@@ -336,8 +344,9 @@ public class txnscript
 		return result ;
     }
 	
-	
-	     // creation fonction pour EXB1613
+
+
+    // creation fonction pour EXB1613
     public static String updateVilleByName (String nom, Integer codePostal)
     {
         String result = "" ;
@@ -435,3 +444,15 @@ public class txnscript
 		return result ;
 	}
 }
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
