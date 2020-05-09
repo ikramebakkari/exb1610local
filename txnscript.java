@@ -310,23 +310,31 @@ public class txnscript
 
 	
 	
+   // fonction existante refactorée pour EXB1613
     public static String updateVille (Integer id, String nom, Integer codePostal)
     {
         String result = "" ;
 		
-		String sql = "UPDATE Villes SET nom = ?, code_postal = ? WHERE id = ?" ;
-
-		try
+		if ( id == null )
 		{
-				PreparedStatement pstmt = cnx.prepareStatement(sql) ;
-				pstmt.setString(1, nom);
-				pstmt.setDouble(2, codePostal);
-				pstmt.setInt(3, id);
-				pstmt.executeUpdate();
+			result = updateVilleByName ( nom, codePostal ) ;
 		}
-		catch (SQLException e)
+		else
 		{
-			System.out.println(e.getMessage());
+			String sql = "UPDATE Villes SET nom = ?, code_postal = ? WHERE id = ?" ;
+
+			try
+			{
+					PreparedStatement pstmt = cnx.prepareStatement(sql) ;
+					pstmt.setString(1, nom);
+					pstmt.setDouble(2, codePostal);
+					pstmt.setInt(3, id);
+					pstmt.executeUpdate();
+			}
+			catch (SQLException e)
+			{
+				System.out.println(e.getMessage());
+			}
 		}
 			
 		result = result + id ;
@@ -335,6 +343,30 @@ public class txnscript
 		result = result + saut_de_ligne ;		
 		return result ;
     }
+	
+
+
+    // creation fonction pour EXB1613
+    public static String updateVilleByName (String nom, Integer codePostal)
+    {
+        String result = "" ;
+		String sql = "UPDATE Villes SET code_postal = ? WHERE nom = ?" ;
+
+		try
+		{
+				PreparedStatement pstmt = cnx.prepareStatement(sql) ;
+				pstmt.setDouble(1, codePostal);
+				pstmt.setString(2, nom);
+				pstmt.executeUpdate();
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		return result ;
+    }
+
 	
 
 	
